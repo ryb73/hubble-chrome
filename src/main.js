@@ -1,6 +1,8 @@
-import githubInjection from "github-injection";
+"use strict";
+
+const githubInjection = require("github-injection"),
+      testUrl         = require("./test-url");
 // import $               from "jquery";
-import urlParse        from "url-parse";
 
 githubInjection(window, (...args) => {
     console.log(location.href);
@@ -9,8 +11,3 @@ githubInjection(window, (...args) => {
 
     console.log("it's good!");
 });
-
-function testUrl(url) {
-    let urlObj = urlParse(url);
-    return urlObj.pathname.match(/^(\/[^\/]+\/[^\/]+)?\/pulls(\/.*)?$/);
-}

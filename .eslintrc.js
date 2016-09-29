@@ -2,15 +2,17 @@ module.exports = {
     "env": {
         "browser": true,
         "es6": true,
+        "commonjs": true,
     },
+
     "extends": [ "eslint:recommended" ],
+
     "parserOptions": {
         "ecmaFeatures": {
             "experimentalObjectRestSpread": true,
         },
-
-        "sourceType": "module"
     },
+
     "rules": {
         "linebreak-style": [
             "error",
@@ -27,7 +29,4 @@ module.exports = {
         ],
         eqeqeq: [ "error", "always" ]
     },
-    "globals": {
-        "arguments": true
-    }
 };
