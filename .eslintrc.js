@@ -1,32 +1,40 @@
 module.exports = {
-    "env": {
-        "browser": true,
-        "es6": true,
-        "commonjs": true,
+    env: {
+        browser: true,
+        es6: true,
+        commonjs: true,
     },
 
-    "extends": [ "eslint:recommended" ],
+    extends: [ "eslint:recommended" ],
 
-    "parserOptions": {
-        "ecmaFeatures": {
-            "experimentalObjectRestSpread": true,
+    parserOptions: {
+        ecmaFeatures: {
+            experimentalObjectRestSpread: true,
         },
     },
 
-    "rules": {
+    rules: {
         "linebreak-style": [
             "error",
             "unix"
         ],
-        "semi": [
+
+        semi: [
             "error",
             "always"
         ],
+
         "no-console": "off",
+
         "no-unused-vars": [
             "error",
             { vars: "all", args: "none" }
         ],
-        eqeqeq: [ "error", "always" ]
+
+        eqeqeq: [ "error", "always" ],
+    },
+
+    globals: {
+        chrome: true,
     },
 };

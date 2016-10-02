@@ -1,7 +1,7 @@
 {
   "name": "upgraded-waffle",
   "version": "1.0.0",
-  "description": "Make GitHub better",
+  "description": "Make GitHub better.",
   "main": "index.js",
   "scripts": {
     "test": "mocha",
