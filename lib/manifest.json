@@ -19,7 +19,6 @@
 
     "permissions": [
         "identity",
-        "https://github.com/login/oauth/authorize",
-        "https://*.chromiumapp.org/*"
+        "https://*.github.com/*"
     ]
 }
