@@ -30,3 +30,5 @@ describe("testUrl", function() {
         });
     });
 });
+
+assert.ok(false);
