@@ -5,13 +5,17 @@ module.exports = {
         commonjs: true,
     },
 
-    extends: [ "eslint:recommended" ],
+    extends: [ "eslint:recommended", "plugin:flowtype/recommended" ],
+
+    parser: "babel-eslint",
 
     parserOptions: {
         ecmaFeatures: {
             experimentalObjectRestSpread: true,
         },
     },
+
+    plugins: [ "flowtype" ],
 
     rules: {
         "linebreak-style": [

@@ -1,3 +1,5 @@
+// @flow
+
 "use strict";
 
 const githubInjection = require("github-injection"),
