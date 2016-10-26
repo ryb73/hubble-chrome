@@ -8,13 +8,30 @@ const githubInjection = require("github-injection"),
       bb              = require("bluebird"),
       testUrl         = require("./test-url");
 
-githubInjection(window, (...args) => {
-    if(!testUrl(location.href))
-        return;
+declare var Bugsnag : any;
+require("./vendor/bugsnag");
 
-    $(".Box-row-link").each((i, elem) => {
-        addPrMarker($(elem));
-    });
+// Set up Bugsnag
+Bugsnag.apiKey = "b7251d720e951f4d30b8d53e947c4cd6";
+Bugsnag.notifyHandler = "xhr";
+Bugsnag.beforeNotify = function (error, metaData) {
+    error.stacktrace = error.stacktrace.replace(/chrome-extension:/g, "chrome_extension:");
+};
+
+Bugsnag.notify("Started content script", null, null, "info");
+
+// githubInjection basically makes Github work with Chrome extensions
+githubInjection(window, (...args) => {
+    try {
+        if(!testUrl(location.href))
+            return;
+
+        $(".Box-row-link").each((i, elem) => {
+            addPrMarker($(elem));
+        });
+    } catch (ex) {
+        reportException(ex);
+    }
 });
 
 function addPrMarker(jqPrLink) {
@@ -29,7 +46,9 @@ function addPrMarker(jqPrLink) {
     let prId = getPrIdFromUrl(prUrl);
 
     getPullRequestData(repoId, prId)
-        .done(setStatus.bind(null, prUrl, statusMarkerContainer));
+        .then(setStatus.bind(null, prUrl, statusMarkerContainer))
+        .catch(reportException)
+        .done();
 }
 
 function getRepoIdFromUrl(url) {
@@ -70,6 +89,7 @@ function getStatusMarkerContainer(jqPrLink) {
 }
 
 function setStatus(prUrl, statusMarkerContainer, prData) {
+    console.log(prData);
     let mergeable = !!prData.mergeable;
     let newMarker = mergeable ? createGoodMarker(prUrl) : createBadMarker(prUrl);
 
@@ -94,4 +114,8 @@ function createBadMarker(prUrl) {
             </svg>
         </a>
     `);
+}
+
+function reportException(ex) {
+    Bugsnag.notifyException(ex);
 }
