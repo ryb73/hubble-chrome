@@ -41,3 +41,6 @@ lib/js
 
 # Flow
 flow-typed/
+
+# Bower
+bower_components/
