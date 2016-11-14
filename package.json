@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha --compilers js:babel-register",
+    "tdb": "node debug ./node_modules/.bin/_mocha --compilers js:babel-register",
     "build": "webpack --progress --config webpack/webpack.config.js",
     "watch": "webpack --progress --config webpack/webpack.config.js --watch",
     "flow": "flow; test $? -eq 0 -o $? -eq 2"
@@ -32,6 +33,7 @@
     "flow-status-webpack-plugin": "^0.1.7",
     "github-injection": "0.2.0",
     "jquery": "^3.1.1",
+    "jsdom": "^9.8.3",
     "mocha": "^3.1.0",
     "url-parse": "^1.1.3",
     "webpack": "2.1.0-beta.22"
