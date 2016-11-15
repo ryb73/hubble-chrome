@@ -1,12 +1,12 @@
 {
-  "name": "upgraded-waffle",
+  "name": "hubble-chrome",
   "description": "Make GitHub better.",
   "main": "index.js",
   "authors": [
     "Ryan Biwer"
   ],
   "license": "MIT",
-  "homepage": "https://github.com/ryb73/upgraded-waffle",
+  "homepage": "https://github.com/ryb73/hubble-chrome",
   "ignore": [
     "**/.*",
     "node_modules",
