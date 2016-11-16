@@ -68,6 +68,7 @@ function addPrMarkersClosure(jqRoot, $, githubApi) {
     }
 
     function setStatus(prUrl, statusMarkerContainer, prData) {
+        console.log(prData);
         let mergeable = !!prData.mergeable;
         let newMarker = mergeable ? createGoodMarker(prUrl) : createBadMarker(prUrl);
 
@@ -76,7 +77,7 @@ function addPrMarkersClosure(jqRoot, $, githubApi) {
 
     function createGoodMarker(prUrl) {
         return $(`
-            <a class="text-green tooltipped tooltipped-e gpp-mergable" aria-label="Ready to merge" href="${prUrl}#partial-pull-merging">
+            <a class="text-green tooltipped tooltipped-e hubble-mergable" aria-label="Ready to merge" href="${prUrl}#partial-pull-merging">
                 <svg aria-hidden="true" class="octicon octicon-check" height="16" version="1.1" viewBox="0 0 12 16" width="12">
                     <path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path>
                 </svg>
@@ -86,7 +87,7 @@ function addPrMarkersClosure(jqRoot, $, githubApi) {
 
     function createBadMarker(prUrl) {
         return $(`
-            <a class="text-red tooltipped tooltipped-e gpp-unmergable" aria-label="Not ready to merge" href="${prUrl}#partial-pull-merging">
+            <a class="text-red tooltipped tooltipped-e hubble-unmergable" aria-label="Not ready to merge" href="${prUrl}#partial-pull-merging">
                 <svg aria-hidden="true" class="octicon octicon-x" height="16" version="1.1" viewBox="0 0 12 16" width="12">
                     <path d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48z"></path>
                 </svg>

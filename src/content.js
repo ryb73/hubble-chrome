@@ -13,6 +13,9 @@ require("./vendor/bugsnag");
 // Set up Bugsnag
 Bugsnag.apiKey = "b7251d720e951f4d30b8d53e947c4cd6";
 Bugsnag.notifyHandler = "xhr";
+Bugsnag.metaData = {
+    version: "0.1"
+};
 Bugsnag.beforeNotify = function (error, metaData) {
     error.stacktrace = error.stacktrace.replace(/chrome-extension:/g, "chrome_extension:");
 };

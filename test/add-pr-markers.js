@@ -14,11 +14,11 @@ describe("addPrMarker", function() {
 
         return addPrMarkers(jqContents, $, mockGithubApi())
             .then(() => {
-                assert.equal($("#issue_6 .gpp-unmergable").length, 1);
-                assert.equal($("#issue_5 .gpp-mergable").length, 1);
+                assert.equal($("#issue_6 .hubble-unmergable").length, 1);
+                assert.equal($("#issue_5 .hubble-mergable").length, 1);
                 assert.equal($("#issue_4 .commit-build-statuses .text-red").length, 1);
                 assert.equal($("#issue_3 .commit-build-statuses .text-red").length, 1);
-                assert.equal($("#issue_2 .gpp-unmergable").length, 1);
+                assert.equal($("#issue_2 .hubble-unmergable").length, 1);
                 assert.equal($("#issue_1 .commit-build-statuses .text-green").length, 1);
             });
     });

@@ -5,11 +5,17 @@ const $  = require("jquery"),
 
 module.exports = {
     getPullRequestData(repoId, prId) {
-        let jqPromise = $.ajax({
-            url: `https://api.github.com/repos/${repoId}/pulls/${prId}`,
-            dataType: "json"
-        });
+        return new bb((resolve, reject) => {
+            let data = {
+                url: `https://api.github.com/repos/${repoId}/pulls/${prId}`,
+                dataType: "json"
+            };
 
-        return bb.resolve(jqPromise);
+            $.ajax(data)
+                .then((result) => { resolve(result); })
+                .catch((jqXHR, textStatus, errorThrown) => {
+                    reject(new Error(`Error requesting PR data: ${repoId}, ${prId}: ${errorThrown}`));
+                });
+        });
     }
 };
